@@ -2,6 +2,7 @@ import os, sys
 # os.chdir("F:/01Algorithms/webmap")
 import http.server
 import socketserver
+
 rootpath = os.path.abspath(os.getcwd())
 sys.path.append(rootpath + "/src")
 datapath = os.path.join(rootpath, "data")
@@ -16,7 +17,7 @@ class RequestsHandler(http.server.SimpleHTTPRequestHandler):
   """
   def do_GET(self):
     if self.path == '/':
-      self.path = 'RCS.html'
+      self.path = 'src/RCS.html'
     return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 handler_object = RequestsHandler
