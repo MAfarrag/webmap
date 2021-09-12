@@ -132,3 +132,5 @@ data/RaCA_Download.zip
 data/RaCA_samples.csv
 data/webmap.qgz
 src/map00.html
+src/map.py
+src/main.py
