@@ -133,57 +133,75 @@ def size5(feature):
     return datadict['size5'][int(feature['id'])]
 
 map = folium.Map([40, -100],zoom_start=5)
-names = ["SOCstock30 - Markers", "SOCstock100 - Markers", "SOCstock5 - Markers"]
-colorfn = [color30, color100, color5]
-sizefn = [size30, size100, size5 ]
-for i in range(3):
-    folium.GeoJson(
-        datajson,
-        name=names[i],
-        marker=folium.CircleMarker(fill_color='orange', radius=4,
-                                   fill_opacity=0.7, color="black", weight=1),
-        popup = popup,
-        # tooltip = tooltip,
-        style_function = lambda feature: {
-            "fillColor": colorfn[i](feature),
-            "radius": sizefn[i](feature),
-        },
-        highlight_function=lambda x: {"fillOpacity": 0.8},
-        zoom_on_click=True,
-    ).add_to(map)
-    # folium.LayerControl().add_to(map)
+# names = ["SOCstock30 - Markers", "SOCstock100 - Markers", "SOCstock5 - Markers"]
+# colorfn = [color30, color100, color5]
+# sizefn = [size30, size100, size5 ]
+# for i in range(3):
+#     folium.GeoJson(
+#         datajson,
+#         name=names[i],
+#         marker=folium.CircleMarker(fill_color='orange', radius=4,
+#                                    fill_opacity=0.7, color="black", weight=1),
+#         popup = popup,
+#         tooltip = tooltip,
+#         style_function = lambda feature: {
+#             "fillColor": colorfn[i](feature),
+#             "radius": sizefn[i](feature),
+#         },
+#         highlight_function=lambda x: {"fillOpacity": 0.8},
+#         zoom_on_click=True,
+#     ).add_to(map)
+#     # folium.LayerControl().add_to(map)
+
+folium.GeoJson(
+    datajson,
+    name="SOCstock100 - Markers",
+    marker=folium.CircleMarker(fill_color='orange', radius=4,
+                               fill_opacity=0.7, color="black", weight=1),
+    popup = popup,
+    tooltip = tooltip,
+    style_function = lambda feature: {
+        "fillColor": color100(feature),
+        "radius": size100(feature),
+    },
+    highlight_function=lambda x: {"fillOpacity": 0.8},
+    zoom_on_click=True,
+).add_to(map)
+
+
+folium.GeoJson(
+    datajson,
+    name="SOCstock30 - Markers",
+    marker=folium.CircleMarker(fill_color='orange', radius=4,
+                               fill_opacity=0.7, color="black", weight=1),
+    # popup = popup,
+    # tooltip = tooltip,
+    style_function = lambda feature: {
+        "fillColor": color30(feature),
+        "radius": size30(feature),
+    },
+    highlight_function=lambda x: {"fillOpacity": 0.8},
+    zoom_on_click=True,
+).add_to(map)
+
 
 map.add_child(colormap)
 
-# folium.GeoJson(
-#     datajson,
-#     name="SOCstock100 - Markers",
-#     marker=folium.CircleMarker(fill_color='orange', radius=4,
-#                                fill_opacity=0.7, color="black", weight=1),
-#     popup = popup,
-#     tooltip = tooltip,
-#     style_function = lambda feature: {
-#         "fillColor": color100(feature),
-#         "radius": size100(feature),
-#     },
-#     highlight_function=lambda x: {"fillOpacity": 0.8},
-#     zoom_on_click=True,
-# ).add_to(map)
 
-# folium.GeoJson(
-#     datajson,
-#     name="SOCstock5 - Markers",
-#     marker=folium.CircleMarker(fill_color='orange', radius=4,
-#                                fill_opacity=0.7, color="black", weight=1),
-#     popup = popup,
-#     tooltip = tooltip,
-#     style_function = lambda feature: {
-#         "fillColor": color5(feature),
-#         "radius": size5(feature),
-#     },
-#     highlight_function=lambda x: {"fillOpacity": 0.8},
-#     zoom_on_click=True,
-# ).add_to(map)
+folium.GeoJson(
+    datajson,
+    name="SOCstock5 - Markers",
+    marker=folium.CircleMarker(fill_color='orange', radius=4,
+                               fill_opacity=0.7, color="black", weight=1),
+    # popup = popup,
+    # tooltip = tooltip,
+    style_function = lambda feature: {
+        "fillColor": color5(feature),
+        "radius": size5(feature),
+    },
+    highlight_function=lambda x: {"fillOpacity": 0.8},
+    zoom_on_click=True,
+).add_to(map)
 
 map.add_child(folium.LatLngPopup())
 # map.save('RCS.html')
