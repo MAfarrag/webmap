@@ -49,6 +49,7 @@ def PrepareData(path):
     # os.chdir(rootpath)
 
     #  read the data
+    print("- Start reading the data")
     data = gpd.read_file(path + "/RaCa_general_location.csv")
     # print(data.shape)
     data2 = gpd.read_file(path + "/RaCA_SOC_pedons.csv")
@@ -59,7 +60,7 @@ def PrepareData(path):
     # print(data.shape)
     data.drop_duplicates(["rcasiteid"], inplace=True)
     # print(data.shape)
-
+    print("- Check duplicate data")
     # print(data2.shape)
     data2.drop_duplicates(["rcasiteid"], inplace=True)
     # print(data2.shape)
@@ -81,12 +82,14 @@ def PrepareData(path):
     # for i in range(len())
     coords = list(zip(lons, lats))
     # not necessary
+    print("- Create Shapely point object")
     objects = CreatePoint(coords)
     new_data['geometry'] = objects
     del new_data['geometry_y'], new_data['geometry_x']
 
     return new_data
     # new_data.to_file("data/data.geojson", driver="GeoJSON")
+    print("- Preparing the data has successfully finished")
 
 
 
@@ -99,6 +102,7 @@ def CreateMap(path):
 
     data = PrepareData(path)
     # data = gpd.read_file("data/data.geojson", driver="GeoJSON")
+    print("- Start creating the map")
     for i in range(len(data)):
         try:
             data.loc[i, 'SOCstock30'] = float(data.loc[i, 'SOCstock30'])
@@ -125,7 +129,7 @@ def CreateMap(path):
     #                                          "lightblue" if SOCstock30>=75 and SOCstock30<100 else
     #                                          "brown" if SOCstock30>=50 and SOCstock30<75 else
     #                                          "grey")
-
+    print("- Calculate Size of Points")
     data['size30'] = data['SOCstock30'].apply(lambda SOCstock30: 12 if SOCstock30 >= 400 else
                                                 10 if SOCstock30 >= 300 and SOCstock30 < 400 else
                                                 8 if SOCstock30 >= 200 and SOCstock30 < 300 else
@@ -232,7 +236,7 @@ def CreateMap(path):
     #         zoom_on_click=True,
     #     ).add_to(map)
     #     # folium.LayerControl().add_to(map)
-
+    print("- Create the first Map - SOCstock 100")
     folium.GeoJson(
         datajson,
         name="SOCstock100 - Markers",
@@ -247,7 +251,7 @@ def CreateMap(path):
         highlight_function=lambda x: {"fillOpacity": 0.8},
         zoom_on_click=True,
     ).add_to(map)
-
+    print("- Create the second Map - SOCstock 30")
     folium.GeoJson(
         datajson,
         name="SOCstock30 - Markers",
@@ -264,7 +268,7 @@ def CreateMap(path):
     ).add_to(map)
 
     map.add_child(colormap)
-
+    print("- Create the third Map - SOCstock 5")
     folium.GeoJson(
         datajson,
         name="SOCstock5 - Markers",
@@ -282,6 +286,7 @@ def CreateMap(path):
 
     map.add_child(folium.LatLngPopup())
     # map.save('RCS.html')
+    print("- Create Heat Maps")
     # heat map
     location_data = data.loc[:, ['Gen_lat', 'Gen_long', 'size100']].values
     map.add_child(plugins.HeatMap(location_data, radius=10, name="SOCstock100 - Heat Map ", ))
@@ -290,13 +295,15 @@ def CreateMap(path):
     location_data = data.loc[:, ['Gen_lat', 'Gen_long', 'size5']].values
     map.add_child(plugins.HeatMap(location_data, radius=10, name="SOCstock5 - Heat Map ", ))
     # map.save('RCS.html')
-    #
+    print("- Create different tiles")
     folium.TileLayer('cartodbpositron').add_to(map)
     folium.TileLayer('cartodbdark_matter').add_to(map)
     folium.TileLayer('Stamen Terrain').add_to(map)
     folium.TileLayer('Stamen Toner').add_to(map)
     folium.TileLayer('Stamen Water Color').add_to(map)
 
-
+    print("- Create Layer control")
     folium.LayerControl().add_to(map)
+    print("- Save map as html")
     map.save('src/RCS.html')
+    print("- Map is created successfully")
