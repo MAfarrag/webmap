@@ -1,11 +1,10 @@
-# socstock 
+# SOCstock 
 
-to view the map please click here [Link to SOCstock map](RCS.html)
+To view the map please click here [Link to SOCstock map](RCS.html)
 
 Install
 -------
 - to install the dependencies using pip
-
 ```
 pip install -r requirements.txt
 ```
@@ -42,14 +41,11 @@ locahost:80
 - the map has a zoom on click shich zoom the the location with the left mouse click
 
 
-
-
-
 Docker image
 --------
 - to download the docker image and install directly using docker
 ```
-docker run mafarrag/socstock:v.0
+docker run mafarrag/socstock:v.1
 ```
 - to view the generated map
 ```
