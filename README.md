@@ -34,12 +34,15 @@ View Map
 locahost:80
 ```
 
-<iframe src="RCS.html" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+<iframe src="src/RCS.html" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 
 Docker image
 --------
-
+- to download the docker image and install directly using docker
+```
+docker run mafarrag/socstock:v.0
+```
 - to view the generated map
 ```
 locahost:4000
