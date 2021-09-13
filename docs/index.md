@@ -1,1 +1,1 @@
-[Link to SOCstock map](https://github.com/MAfarrag/webmap/blob/main/docs/RCS.html)
+[Link to SOCstock map](RCS.html)
