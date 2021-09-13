@@ -22,7 +22,7 @@ class RequestsHandler(http.server.SimpleHTTPRequestHandler):
 
 handler_object = RequestsHandler
 
-PORT = 8000
+PORT = 4000
 my_server = socketserver.TCPServer(("", PORT), handler_object)
 # Start the server
 print("Server started at localhost:" + str(PORT))
