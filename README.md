@@ -31,7 +31,7 @@ View Map
 - to view the generated map
 - open your google chrome and type 
 ```
-locahost:4000
+locahost:80
 ```
 - The Map Contains 6 layers 3 point maps (SOCstock 100, 30, 5) and 3 heat maps (SOCstock-Heat Map 100, 30, 5) which can be check on/off using the later control at the top right corner 
 - the SOCstock 100 point map has a popup when you hover over any point showing the site id , the value of the SOCstock 100, 30, and 5
