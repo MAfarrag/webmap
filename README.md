@@ -1,5 +1,7 @@
 # socstock 
 
+check the documentation [here](https://mafarrag.github.io/webmap/)
+
 Install
 -------
 - to install the dependencies using pip
