@@ -5,7 +5,8 @@
 - the background tile can be changed to one of the 6 tile (cartodbpositron, cartodbdark_matter, Stamen Terrain, Stamen Toner, Stamen Water Color) through the layer control at the top right corner  
 - the map has a popup for the location when you press left click on any part of the map showing the latitude and longitude of the location
 - the map has a zoom on click shich zoom the the location with the left mouse click
-- there are two degrees of red color with different range (light red for values greater than 400 and dark red for values between )
+- there are two degrees of red color with different range (light red for values greater than 400 and dark red for values between 100 and 150)
+- the size of the points have the same scale ar the color scale 
 
 View Map
 --------
