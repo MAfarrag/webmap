@@ -41,9 +41,6 @@ locahost:80
 - the map has a popup for the location when you press left click on any part of the map showing the latitude and longitude of the location
 - the map has a zoom on click shich zoom the the location with the left mouse click
 
-<iframe src="src/RCS.html" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-
-
 
 Docker image
 --------
