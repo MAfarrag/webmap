@@ -47,7 +47,7 @@ Docker image
 --------
 - to download the docker image and install directly using docker
 ```
-docker run mafarrag/socstock:v.1
+docker run -p 4000:80 mafarrag/socstock:v.1
 ```
 - to view the generated map
 ```

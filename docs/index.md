@@ -5,6 +5,7 @@
 - the background tile can be changed to one of the 6 tile (cartodbpositron, cartodbdark_matter, Stamen Terrain, Stamen Toner, Stamen Water Color) through the layer control at the top right corner  
 - the map has a popup for the location when you press left click on any part of the map showing the latitude and longitude of the location
 - the map has a zoom on click shich zoom the the location with the left mouse click
+- there are two degrees of red color with different range (light red for values greater than 400 and dark red for values between )
 
 View Map
 --------
@@ -63,7 +64,7 @@ Docker image
 - Docker image takes some time to load as the docker image copys the files beetween directories however at the end it works fine.
 
 ```
-docker run mafarrag/socstock:v.1
+docker run -p 4000:80 mafarrag/socstock:v.1
 ```
 
 - to view the generated map
